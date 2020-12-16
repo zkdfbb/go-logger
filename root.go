@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"fmt"
 	"github.com/mattn/go-isatty"
 	"os"
 )
@@ -18,114 +19,136 @@ func init() {
 	}
 }
 
+func Detach(adapterName string) error {
+	return log.Detach(adapterName)
+}
+
 func Attach(adapterName string, level int, config Config) error {
 	return log.Attach(adapterName, level, config)
 }
 
 func Emergency(msg string, a ...interface{}) {
 	if len(a) > 0 {
-		log.Emergencyf(msg, a...)
+		msg := fmt.Sprintf(msg, a...)
+		log.Writer(LOGGER_LEVEL_EMERGENCY, msg)
 	} else {
-		log.Emergency(msg)
+		log.Writer(LOGGER_LEVEL_EMERGENCY, msg)
 	}
 }
 
 func Emergencyf(format string, a ...interface{}) {
-	log.Emergencyf(format, a...)
+	msg := fmt.Sprintf(format, a...)
+	log.Writer(LOGGER_LEVEL_EMERGENCY, msg)
 }
 
 func Alert(msg string, a ...interface{}) {
 	if len(a) > 0 {
-		log.Alertf(msg, a...)
+		msg := fmt.Sprintf(msg, a...)
+		log.Writer(LOGGER_LEVEL_ALERT, msg)
 	} else {
-		log.Alert(msg)
+		log.Writer(LOGGER_LEVEL_ALERT, msg)
 	}
 }
 
 func Alertf(format string, a ...interface{}) {
-	log.Alertf(format, a...)
+	msg := fmt.Sprintf(format, a...)
+	log.Writer(LOGGER_LEVEL_ALERT, msg)
 }
 
 func Critical(msg string, a ...interface{}) {
 	if len(a) > 0 {
-		log.Criticalf(msg, a...)
+		msg := fmt.Sprintf(msg, a...)
+		log.Writer(LOGGER_LEVEL_CRITICAL, msg)
 	} else {
-		log.Critical(msg)
+		log.Writer(LOGGER_LEVEL_CRITICAL, msg)
 	}
 }
 
 func Criticalf(format string, a ...interface{}) {
-	log.Criticalf(format, a...)
+	msg := fmt.Sprintf(format, a...)
+	log.Writer(LOGGER_LEVEL_CRITICAL, msg)
 }
 
 func Error(msg string, a ...interface{}) {
 	if len(a) > 0 {
-		log.Errorf(msg, a...)
+		msg := fmt.Sprintf(msg, a...)
+		log.Writer(LOGGER_LEVEL_ERROR, msg)
 	} else {
-		log.Error(msg)
+		log.Writer(LOGGER_LEVEL_ERROR, msg)
 	}
 }
 
 func Errorf(format string, a ...interface{}) {
-	log.Errorf(format, a...)
+	msg := fmt.Sprintf(format, a...)
+	log.Writer(LOGGER_LEVEL_ERROR, msg)
 }
 
 func Warning(msg string, a ...interface{}) {
 	if len(a) > 0 {
-		log.Warningf(msg, a...)
+		msg := fmt.Sprintf(msg, a...)
+		log.Writer(LOGGER_LEVEL_WARNING, msg)
 	} else {
-		log.Warning(msg)
+		log.Writer(LOGGER_LEVEL_WARNING, msg)
 	}
 }
 
 func Warningf(format string, a ...interface{}) {
-	log.Warningf(format, a...)
+	msg := fmt.Sprintf(format, a...)
+	log.Writer(LOGGER_LEVEL_WARNING, msg)
 }
 
 func Warn(msg string, a ...interface{}) {
 	if len(a) > 0 {
-		log.Warningf(msg, a...)
+		msg := fmt.Sprintf(msg, a...)
+		log.Writer(LOGGER_LEVEL_WARNING, msg)
 	} else {
-		log.Warning(msg)
+		log.Writer(LOGGER_LEVEL_WARNING, msg)
 	}
 }
 
 func Warnf(format string, a ...interface{}) {
-	log.Warningf(format, a...)
+	msg := fmt.Sprintf(format, a...)
+	log.Writer(LOGGER_LEVEL_WARNING, msg)
 }
 
 func Notice(msg string, a ...interface{}) {
 	if len(a) > 0 {
-		log.Noticef(msg, a...)
+		msg := fmt.Sprintf(msg, a...)
+		log.Writer(LOGGER_LEVEL_NOTICE, msg)
 	} else {
-		log.Notice(msg)
+		log.Writer(LOGGER_LEVEL_NOTICE, msg)
 	}
 }
 
 func Noticef(format string, a ...interface{}) {
-	log.Noticef(format, a...)
+	msg := fmt.Sprintf(format, a...)
+	log.Writer(LOGGER_LEVEL_NOTICE, msg)
 }
 
 func Info(msg string, a ...interface{}) {
 	if len(a) > 0 {
-		log.Infof(msg, a...)
+		msg := fmt.Sprintf(msg, a...)
+		log.Writer(LOGGER_LEVEL_INFO, msg)
 	} else {
-		log.Info(msg)
+		log.Writer(LOGGER_LEVEL_INFO, msg)
 	}
 }
 
 func Infof(format string, a ...interface{}) {
-	log.Infof(format, a...)
+	msg := fmt.Sprintf(format, a...)
+	log.Writer(LOGGER_LEVEL_INFO, msg)
 }
 
 func Debug(msg string, a ...interface{}) {
 	if len(a) > 0 {
-		log.Debugf(msg, a...)
+		msg := fmt.Sprintf(msg, a...)
+		log.Writer(LOGGER_LEVEL_DEBUG, msg)
 	} else {
-		log.Debug(msg)
+		log.Writer(LOGGER_LEVEL_DEBUG, msg)
 	}
 }
 
 func Debugf(format string, a ...interface{}) {
-	log.Debugf(format, a...)
+	msg := fmt.Sprintf(format, a...)
+	log.Writer(LOGGER_LEVEL_DEBUG, msg)
 }
