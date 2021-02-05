@@ -27,6 +27,18 @@ func Attach(adapterName string, level int, config Config) error {
 	return log.Attach(adapterName, level, config)
 }
 
+func SetLevel(level string) {
+	outputs := []*outputLogger{}
+	for _, output := range log.outputs {
+		output.Level = log.LoggerLevel(level)
+	}
+	log.outputs = outputs
+}
+
+func LoggerLevel(levelStr string) int {
+	return log.LoggerLevel(levelStr)
+}
+
 func Emergency(msg string, a ...interface{}) {
 	if len(a) > 0 {
 		msg := fmt.Sprintf(msg, a...)
